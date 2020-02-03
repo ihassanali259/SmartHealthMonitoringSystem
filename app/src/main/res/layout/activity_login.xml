@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backbg"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingTop="100dp"
+        android:layout_marginTop="0dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Health  Monitor"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/textlabel"
+            android:layout_marginBottom="140dp"
+            android:fontFamily="@font/losdiablos"
+            android:textSize="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center"
+            />
+
+   <!--     <ImageView
+
+            android:layout_width="391dp"
+            android:layout_height="226dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="50dp"
+            app:srcCompat="@drawable/aca4d52e" /> -->
+
+
+
+
+       <EditText
+
+           android:layout_width="300dp"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="40dp"
+           android:backgroundTint="@color/colorWhite"
+           android:hint="@string/shr_hint_username"
+           android:id="@+id/usernamefield"
+           android:textColorHint="@color/colorWhite"
+           android:textColor="@color/colorWhite"
+           android:inputType="text"
+           android:layout_gravity="center"
+           />
+        <EditText
+            android:layout_marginBottom="20dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorWhite"
+            android:hint="@string/shr_hint_password"
+            android:id="@+id/passwordfield"
+            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:inputType="textPassword"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp">
+
+            <Button
+                android:id="@+id/buttonlogin"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="8dp"
+                android:text="@string/loginbutton"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/mybuttons"/>
+
+            <TextView
+                android:id="@+id/accountinfotext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonlogin"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/accountinfo"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:fontFamily="monospace" />
+
+
+         <!--   <Button
+                android:id="@+id/buttonsignup1"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/accountinfotext"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/mybuttons"
+                android:padding="8dp"
+                android:text="@string/signupbutton"
+
+                android:textColor="@color/blue"
+                android:layout_marginBottom="10dp"
+                /> -->
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>

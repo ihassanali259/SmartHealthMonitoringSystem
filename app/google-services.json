@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "737578949860",
+    "firebase_url": "https://smart-health-monitoring-d6f00.firebaseio.com",
+    "project_id": "smart-health-monitoring-d6f00",
+    "storage_bucket": "smart-health-monitoring-d6f00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737578949860:android:3f7c969747e2120677a0f1",
+        "android_client_info": {
+          "package_name": "com.example.shms1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737578949860-4kr37d8b1p4gbaukn9k22gbs3df33fkq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shms1",
+            "certificate_hash": "13d522072e1a27dc7ce4a7b430b31a44af04da2c"
+          }
+        },
+        {
+          "client_id": "737578949860-pnh06dfhlr01fbnngde7mblr7j03okfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF8WjJoGQ1ztSthtqnXjuCqEHkX5V37SQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737578949860-pnh06dfhlr01fbnngde7mblr7j03okfj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737578949860:android:ec56fccdbc3e839f77a0f1",
+        "android_client_info": {
+          "package_name": "come.example.SHMS1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737578949860-pnh06dfhlr01fbnngde7mblr7j03okfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF8WjJoGQ1ztSthtqnXjuCqEHkX5V37SQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737578949860-pnh06dfhlr01fbnngde7mblr7j03okfj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
