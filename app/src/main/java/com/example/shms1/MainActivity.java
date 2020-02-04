@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     public Button dietplanbtn;
     public Button logoutbtn;
+    Button bmibtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
         dietplanbtn=findViewById(R.id.Dietplanbutton);
         logoutbtn=findViewById(R.id.logoutbtn);
+        bmibtn = findViewById(R.id.bmicalculatorbtn);
+
+        bmibtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), BMIFragmentActivity.class);
+                startActivity(i);
+            }
+        });
 
         dietplanbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,11 +45,12 @@ public class MainActivity extends AppCompatActivity {
         logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPreferences=getSharedPreferences("Mypref",0);
+                SharedPreferences sharedPreferences = getSharedPreferences("MyPref", 0);
                 sharedPreferences.edit().clear().apply();
 
                 Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
