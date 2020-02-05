@@ -83,7 +83,7 @@
                 android:layout_centerHorizontal="true"
                 android:padding="8dp"
                 android:text="@string/loginbutton"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorWhite"
                 android:background="@drawable/mybuttons"/>
 
             <TextView

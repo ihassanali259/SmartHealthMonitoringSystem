@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -17,6 +18,7 @@ public class ResultFragment extends Fragment {
     public final Double UNDER_WEIGHT_LIMIT = 18.5;
     public final Double OVER_WEIGHT_LIMIT = 24.9;
     public final Double OBESE_LIMIT = 29.9;
+    public ImageView image;
     String result_statement;
 
     private View view;
@@ -29,6 +31,7 @@ public class ResultFragment extends Fragment {
 
         //initializing components
         TextView result = view.findViewById(R.id.resulttextview);
+        image = view.findViewById(R.id.imageviewbmi);
 
 
         //Getting data from activity
@@ -51,7 +54,8 @@ public class ResultFragment extends Fragment {
 
         } else if (Bmi_level >= UNDER_WEIGHT_LIMIT && Bmi_level <= OVER_WEIGHT_LIMIT) {
 
-            result_statement = " You are in normal condition. Your BMI level is " + Bmi_level;
+            result_statement = "Your BMI level is " + Bmi_level + ". Your are healthy.";
+            image.setImageResource(R.drawable.healthy);
             result.setText(result_statement);
 
         } else if (Bmi_level > OVER_WEIGHT_LIMIT && Bmi_level < OBESE_LIMIT) {

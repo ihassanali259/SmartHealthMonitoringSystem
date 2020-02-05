@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+
 import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity {
@@ -59,12 +61,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //Component initialization for login activity
-        loginbutton=(Button) findViewById(R.id.buttonlogin);
-        usernamefield=(EditText)findViewById(R.id.usernamefield);
+        loginbutton = findViewById(R.id.buttonlogin);
+        usernamefield = findViewById(R.id.usernamefield);
         //signupbutton=(Button) findViewById(R.id.buttonsignup1);
 
         signuptext= findViewById(R.id.accountinfotext);
-        passwordfield=(EditText) findViewById(R.id.passwordfield);
+        passwordfield = findViewById(R.id.passwordfield);
 
 
 
@@ -223,6 +225,21 @@ catch(NullPointerException ex){
           }
       });
 
+    }
+
+    public boolean isOnline() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
 
