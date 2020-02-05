@@ -2,22 +2,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/backbg"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingTop="100dp"
     tools:context=".BMIFragmentActivity">
 
-    <FrameLayout
-        android:id="@+id/fragmentcalculator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        />
+    <EditText
+        android:id="@+id/weightfield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/colorWhite"
+        android:hint="@string/weight_hint"
+        android:inputType="numberDecimal"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite" />
+
+    <EditText
+        android:id="@+id/height_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/colorWhite"
+        android:hint="@string/height_hint"
+        android:inputType="numberDecimal"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btn_calculateProceed"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/mybuttons"
+            android:padding="8dp"
+            android:text="@string/btn_calculate"
+            android:textColor="@color/colorPrimaryDark" />
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/fragmentResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
 
         />
 

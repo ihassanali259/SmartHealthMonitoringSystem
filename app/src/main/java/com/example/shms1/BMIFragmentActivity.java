@@ -1,37 +1,64 @@
 package com.example.shms1;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class BMIFragmentActivity extends AppCompatActivity {
+
+    EditText editTextWeigthfield;
+    EditText editTextHeightfield;
+    Button bmibtnProceed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmifragment);
-        loadhomefragment(new CalculatorFragment());
-    }
 
- /*   private void loadFragment(Fragment fragment) {
-// create a FragmentManager
-        FragmentManager fm = getFragmentManager();
-// create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-// replace the FrameLayout with new Fragment
-        fragmentTransaction.add(R.id.fragmentResult, fragment).commit();
+        //Initializing Components
+        editTextWeigthfield = findViewById(R.id.weightfield);
+        editTextHeightfield = findViewById(R.id.height_field);
+        bmibtnProceed = findViewById(R.id.btn_calculateProceed);
 
-    } */
 
-    private void loadhomefragment(Fragment fragment) {
-        FragmentManager fm = getFragmentManager();
+        bmibtnProceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new ResultFragment());
 
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.add(R.id.fragmentcalculator, fragment).commit();
+            }
+        });
+
+
 
 
     }
+
+    private void loadFragment(Fragment fragment) {
+        Bundle data = new Bundle();
+        data.putDouble("WEIGHT", Double.parseDouble(editTextWeigthfield.getText().toString()));
+        data.putDouble("HEIGHT", Double.parseDouble(editTextHeightfield.getText().toString()));
+        fragment.setArguments(data);
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentResult, fragment).commit();
+
+    }
+
+//    private void loadhomefragment(Fragment fragment) {
+    //      FragmentManager fm = getFragmentManager();
+
+    //    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+    //  fragmentTransaction.add(R.id.fragmentcalculator, fragment).commit();
+
+
+    //  }
+
 }
