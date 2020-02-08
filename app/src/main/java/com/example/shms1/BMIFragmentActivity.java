@@ -1,7 +1,9 @@
 package com.example.shms1;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,28 +18,12 @@ public class BMIFragmentActivity extends AppCompatActivity {
     EditText editTextHeightfield;
     Button bmibtnProceed;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bmifragment);
-
-        //Initializing Components
-        editTextWeigthfield = findViewById(R.id.weightfield);
-        editTextHeightfield = findViewById(R.id.height_field);
-        bmibtnProceed = findViewById(R.id.btn_calculateProceed);
-
-
-        bmibtnProceed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadFragment(new ResultFragment());
-
-            }
-        });
-
-
-
-
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
     }
 
     private void loadFragment(Fragment fragment) {
@@ -60,5 +46,30 @@ public class BMIFragmentActivity extends AppCompatActivity {
 
 
     //  }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bmifragment);
+
+        //Initializing Components
+        editTextWeigthfield = findViewById(R.id.weightfield);
+        editTextHeightfield = findViewById(R.id.height_field);
+        bmibtnProceed = findViewById(R.id.btn_calculateProceed);
+
+
+        bmibtnProceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new ResultFragment());
+                hideSoftKeyboard(BMIFragmentActivity.this);
+
+            }
+        });
+
+
+
+
+    }
 
 }

@@ -49,22 +49,25 @@ public class ResultFragment extends Fragment {
 
         if (Bmi_level < UNDER_WEIGHT_LIMIT) {
 
-            result_statement = " You are Underweight. Your BMI level is " + Bmi_level;
+            result_statement = "Your BMI level is " + Bmi_level + ".\n" + getString(R.string.bmi_lines);
+            image.setImageResource(R.drawable.thin);
             result.setText(result_statement);
 
         } else if (Bmi_level >= UNDER_WEIGHT_LIMIT && Bmi_level <= OVER_WEIGHT_LIMIT) {
 
-            result_statement = "Your BMI level is " + Bmi_level + ". Your are healthy.";
+            result_statement = "Your BMI level is " + Bmi_level + ".\n" + getString(R.string.bmi_lines);
             image.setImageResource(R.drawable.healthy);
             result.setText(result_statement);
 
         } else if (Bmi_level > OVER_WEIGHT_LIMIT && Bmi_level < OBESE_LIMIT) {
 
-            result_statement = " You are Overweight. Your BMI level is " + Bmi_level;
+            result_statement = "Your BMI level is " + Bmi_level + ".\n" + getString(R.string.bmi_lines);
+            image.setImageResource(R.drawable.fat);
             result.setText(result_statement);
         } else if (Bmi_level >= OBESE_LIMIT) {
 
-            result_statement = " You are Highly Overweight. Your BMI level is " + Bmi_level;
+            result_statement = " Your BMI level is " + Bmi_level + ".\n" + getString(R.string.bmi_lines);
+            image.setImageResource(R.drawable.obese);
             result.setText(result_statement);
         }
 

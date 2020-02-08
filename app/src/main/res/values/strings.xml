@@ -18,6 +18,7 @@
     <string name="action_settings">Settings</string>
     <string name="weight_hint">Weight in Kilos</string>
     <string name="height_hint">Height in centimeters</string>
+    <string name="bmi_lines"> A normal BMI score is one that falls between 18.5 and 24.9. This indicates that a person is within the normal weight range for his or her height. </string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>

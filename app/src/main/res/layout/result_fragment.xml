@@ -44,7 +44,7 @@
                     android:layout_toRightOf="@id/imageviewbmi"
                     android:singleLine="false"
                     android:text="hugugu asjdsahd ndsakdnaslk ndaslkjdnsad bndasdaso asdaskdja"
-                    android:textColor="@color/blue"
+                    android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
             </RelativeLayout>
