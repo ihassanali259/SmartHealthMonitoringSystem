@@ -88,7 +88,7 @@ private DatabaseReference dbuser, dbuser2;
             int id = myRadiogroup.getCheckedRadioButtonId();
 
             Log.i("Fname", fname);
-            radioButton = (RadioButton) findViewById(id);
+        radioButton = findViewById(id);
             String myselectedbutton = radioButton.getText().toString();
 
             UserAuthenticationData user=new UserAuthenticationData(uId,fname,lname,email, uname, passwrd,myselectedbutton);

@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     public Button dietplanbtn;
     public Button logoutbtn;
     Button bmibtn;
+    Button btn_step_counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         dietplanbtn=findViewById(R.id.Dietplanbutton);
         logoutbtn=findViewById(R.id.logoutbtn);
         bmibtn = findViewById(R.id.bmicalculatorbtn);
+        btn_step_counter = findViewById(R.id.footstpcounterbtn);
 
         bmibtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        btn_step_counter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), StepCounterActivity.class);
+                startActivity(i);
             }
         });
     }
