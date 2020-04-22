@@ -159,7 +159,7 @@ catch(NullPointerException ex){
                                    editor.commit();
 
                                     Toasty.success(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                   Intent intent = new Intent(getApplicationContext(), ProgressBarActivity.class);
                                     intent.putExtra("USER_NAME", username);
                                     startActivity(intent);
                                     finish();

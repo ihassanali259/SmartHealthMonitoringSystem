@@ -1,67 +1,77 @@
 package com.example.shms1;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import es.dmoral.toasty.Toasty;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
 
-    public Button dietplanbtn;
-    public Button logoutbtn;
-    Button bmibtn;
-    Button btn_step_counter;
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    private androidx.appcompat.widget.Toolbar mToolbar;
+    private BottomNavigationView bottomnavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mToolbar = findViewById(R.id.toolbar);
+        bottomnavigation = findViewById(R.id.navigationview);
+        bottomnavigation.setOnNavigationItemSelectedListener(this);
 
-        dietplanbtn=findViewById(R.id.Dietplanbutton);
-        logoutbtn=findViewById(R.id.logoutbtn);
-        bmibtn = findViewById(R.id.bmicalculatorbtn);
-        btn_step_counter = findViewById(R.id.footstpcounterbtn);
 
-        bmibtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), BMIFragmentActivity.class);
-                startActivity(i);
-            }
-        });
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        loadFragment(new HomeFragment());
 
-        dietplanbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toasty.success(getApplicationContext(),"Hi there you have done an amazing work", Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        logoutbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences sharedPreferences = getSharedPreferences("MyPref", 0);
-                sharedPreferences.edit().clear().apply();
+    }
 
-                Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
 
-        btn_step_counter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), StepCounterActivity.class);
-                startActivity(i);
-            }
-        });
+
+    //Load the fragments in framelayout
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.framelayout, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
+
+
+    //NavigationView item Click Listener
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.navigation_home:
+                loadFragment(new HomeFragment());
+
+                break;
+            case R.id.navigation_report:
+                Toast.makeText(getApplicationContext(), "Click is working Fine", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.navigation_profile:
+                Toast.makeText(getApplicationContext(), "Click is working Fine of profile", Toast.LENGTH_SHORT).show();
+
+        }
+
+        return false;
     }
 }
