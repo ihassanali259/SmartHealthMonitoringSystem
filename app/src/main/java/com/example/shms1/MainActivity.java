@@ -1,5 +1,6 @@
 package com.example.shms1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private androidx.appcompat.widget.Toolbar mToolbar;
     private BottomNavigationView bottomnavigation;
+    String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +29,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomnavigation = findViewById(R.id.navigationview);
         bottomnavigation.setOnNavigationItemSelectedListener(this);
 
+        username = getIntent().getStringExtra("USER_NAME");
+
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         loadFragment(new HomeFragment());
+
 
 
     }
@@ -68,7 +74,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 Toast.makeText(getApplicationContext(), "Click is working Fine", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.navigation_profile:
-                Toast.makeText(getApplicationContext(), "Click is working Fine of profile", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+                i.putExtra("USER_NAME", username);
+                startActivity(i);
+                //Toast.makeText(getApplicationContext(), "Click is working Fine of profile", Toast.LENGTH_SHORT).show();
 
         }
 

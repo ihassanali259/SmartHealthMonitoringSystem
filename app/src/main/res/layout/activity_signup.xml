@@ -1,145 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background">
+    android:background="@color/colorWhite">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/wave"
+
+        />
 
     <RelativeLayout
-        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+
         android:layout_marginBottom="20dp"
         android:paddingBottom="10dp">
 
         <TextView
+            android:id="@+id/textlabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create an account"
-            android:textColor="@color/colorWhite"
-            android:id="@+id/textlabel"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="40dp"
             android:fontFamily="Brush-Script-MT"
-            android:textStyle="bold"
+            android:text="Create an account"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="25dp"
-            android:layout_marginLeft="10dp"
-            />
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/firstname"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/textlabel"
             android:layout_centerHorizontal="true"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/colorWhite"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_background"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="First name"
-            android:id="@+id/firstname"
-            android:textColorHint="@color/colorWhite"
-            android:textColor="@color/colorWhite"
             android:inputType="textPersonName"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            />
+            android:padding="16dp"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark" />
+
         <EditText
-            android:layout_centerHorizontal="true"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/colorWhite"
-            android:hint="Last name"
             android:id="@+id/lstname"
-            android:textColorHint="@color/colorWhite"
-            android:textColor="@color/colorWhite"
-            android:inputType="textPersonName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/firstname"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_background"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="Last name"
+            android:inputType="textPersonName"
+            android:padding="16dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark" />
 
-            android:layout_below="@id/firstname"/>
         <EditText
 
-            android:layout_centerHorizontal="true"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/colorWhite"
-            android:hint="Email"
             android:id="@+id/email"
-            android:textColorHint="@color/colorWhite"
-            android:textColor="@color/colorWhite"
-            android:inputType="textEmailAddress"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/lstname"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_background"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="16dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark"
 
             />
+
         <EditText
-            android:layout_centerHorizontal="true"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/colorWhite"
-            android:hint="Username"
             android:id="@+id/username"
-            android:textColorHint="@color/colorWhite"
-            android:textColor="@color/colorWhite"
-            android:inputType="text"
-            android:layout_below="@id/email"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"
-            />
-        <EditText
-            android:layout_centerHorizontal="true"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
+            android:layout_below="@id/email"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:backgroundTint="@color/colorWhite"
-            android:hint="@string/shr_hint_password"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_background"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"
+            android:hint="Username"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark" />
+
+        <EditText
             android:id="@+id/passwordfield"
-            android:textColorHint="@color/colorWhite"
-            android:textColor="@color/colorWhite"
-            android:inputType="textPassword"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/username"
-            />
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/round_background"
+            android:hint="@string/shr_hint_password"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark" />
+
         <RadioGroup
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/passwordfield"
             android:id="@+id/radiogroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/passwordfield"
             android:layout_marginStart="50dp"
-            >
+            android:layout_marginTop="20dp">
+
             <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/radiomale"
-                android:text="Male"
-                android:textColor="@color/colorWhite"
-                android:backgroundTint="@color/colorWhite"
-                />
-            <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/radiofemale"
-                android:textColor="@color/colorWhite"
-                android:text="Female"
-                android:shadowColor="@color/colorWhite"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:buttonTint="@color/colorPrimaryDark"
+                android:text="Male"
+                android:textColor="@color/colorPrimaryDark"
+
                 />
+
+            <RadioButton
+                android:id="@+id/radiofemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimaryDark"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:text="Female"
+                android:textColor="@color/colorPrimaryDark" />
         </RadioGroup>
 
         <Button
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/radiogroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/mybuttons"
-            android:textColor="@color/colorWhite"
-            android:text="@string/signupbutton"
             android:id="@+id/signupbutton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radiogroup"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/mybuttons"
+            android:text="@string/signupbutton"
+            android:textColor="@color/colorWhite"
 
             />
 
 
     </RelativeLayout>
 
-</ScrollView>
+</RelativeLayout>

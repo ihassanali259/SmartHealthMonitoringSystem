@@ -35,6 +35,7 @@ private RadioButton radioButton;
 private Button buttonsignup;
 private DatabaseReference dbuser, dbuser2;
 
+    EmailVerificationClass emf;
     DBHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,8 @@ private DatabaseReference dbuser, dbuser2;
          textpassword=   findViewById(R.id.passwordfield);
          myRadiogroup=    findViewById(R.id.radiogroup);
          buttonsignup=    findViewById(R.id.signupbutton);
-         dbuser2=FirebaseDatabase.getInstance().getReference("UserInfo");
+        emf = new EmailVerificationClass();
+
 
 
          dbuser= FirebaseDatabase.getInstance().getReference("UserRegister");
@@ -94,9 +96,13 @@ private DatabaseReference dbuser, dbuser2;
             UserAuthenticationData user=new UserAuthenticationData(uId,fname,lname,email, uname, passwrd,myselectedbutton);
             dbuser.child(uId).setValue(user);
 
+        emf.emailVerifyRequest(email);
+
+
            // db.InsertRegistrationRecord(fname, lname, email, uname, passwrd, myselectedbutton);
             Toasty.success(getApplicationContext(), "Registered Successfully!", Toast.LENGTH_SHORT).show();
-        Intent i=new Intent(getApplicationContext(), MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), EmailVerificationActivity.class);
+        i.putExtra("Email", email);
         i.putExtra("Username",uname);
         startActivity(i);
         finish();

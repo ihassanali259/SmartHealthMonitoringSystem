@@ -86,9 +86,9 @@ public class LoginActivity extends AppCompatActivity {
 
 try {
     if (islogin) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-        finish();
+        // Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        //startActivity(intent);
+        //finish();
 
     }
 }
@@ -136,18 +136,7 @@ catch(NullPointerException ex){
                                     // Log.i("Message","Wroking ok");
                                     //Log.i("Password",password);
                                     //Log.i("Username", username);
-
-
-
-
-
-
-
-
-
-
-
-                                    //Toasty.success(getApplicationContext(),"You are genius Ali",Toast.LENGTH_SHORT).show();
+                                   //Toasty.success(getApplicationContext(),"You are genius Ali",Toast.LENGTH_SHORT).show();
                                    String username=usernamefield.getText().toString();
 
 
@@ -156,7 +145,7 @@ catch(NullPointerException ex){
                                    editor.putString("USER_NAME", username);
                                    editor.putString("PASSWORD",password);
                                    editor.putBoolean("LoginValue",isStoreloginvalue());
-                                   editor.commit();
+                                   editor.apply();
 
                                     Toasty.success(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                                    Intent intent = new Intent(getApplicationContext(), ProgressBarActivity.class);

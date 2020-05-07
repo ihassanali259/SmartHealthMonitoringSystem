@@ -10,13 +10,14 @@ public class UserAuthenticationData
  String username;
  String Password;
  String gender;
+    //int total_Steps;
 
  public UserAuthenticationData(){
 
  }
 
  public UserAuthenticationData(String uid, String fname, String lname,
-                               String email, String username, String Password,String grnder){
+                               String email, String username, String Password, String gender) {
 
      this.UserID=uid;
      this.firstname=fname;
@@ -54,4 +55,6 @@ public class UserAuthenticationData
     public String getGender() {
         return gender;
     }
+
+    //public int getTotal_Steps(){return total_Steps;}
 }

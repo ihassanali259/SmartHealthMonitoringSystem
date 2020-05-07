@@ -13,12 +13,14 @@ import com.agrawalsuneet.dotsloader.loaders.LazyLoader;
 public class ProgressBarActivity extends AppCompatActivity {
 
     LazyLoader lazyLoader;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress_bar);
         lazyLoader = findViewById(R.id.lazyloader);
+        username = getIntent().getStringExtra("USER_NAME");
 
         LazyLoader loader = new LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.loader_selected),
                 ContextCompat.getColor(this, R.color.loader_selected),
@@ -43,6 +45,7 @@ public class ProgressBarActivity extends AppCompatActivity {
                 // This method will be executed once the timer is over
                 // Start your app main activity
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("USER_NAME", username);
                 startActivity(i);
 
                 // close this activity
