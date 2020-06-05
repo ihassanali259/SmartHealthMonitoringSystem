@@ -27,20 +27,16 @@ import java.io.IOException;
 import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity {
- private Button loginbutton;
- private EditText usernamefield;
- private Button signupbutton;
- private DBHandler dbHandler;
- private  EditText passwordfield;
- private TextView signuptext;
- SharedPreferences mypref;
- SharedPreferences.Editor editor;
- String uname;
- String pswd;
-
-
-
-
+    SharedPreferences mypref;
+    SharedPreferences.Editor editor;
+    String uname;
+    String pswd;
+    private Button loginbutton;
+    private EditText usernamefield;
+    private Button signupbutton;
+    private DBHandler dbHandler;
+    private EditText passwordfield;
+    private TextView signuptext;
 
 
     public void setStoreloginvalue(boolean storeloginvalue) {
@@ -53,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean storeloginvalue;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -65,44 +60,36 @@ public class LoginActivity extends AppCompatActivity {
         usernamefield = findViewById(R.id.usernamefield);
         //signupbutton=(Button) findViewById(R.id.buttonsignup1);
 
-        signuptext= findViewById(R.id.accountinfotext);
+        signuptext = findViewById(R.id.accountinfotext);
         passwordfield = findViewById(R.id.passwordfield);
 
 
-
         loginbutton.setText(R.string.loginbutton);
-        dbHandler=new DBHandler(getApplicationContext());
-
-
+        dbHandler = new DBHandler(getApplicationContext());
 
 
         ////////////////
-       mypref= getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-         editor=mypref.edit();
+        mypref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        editor = mypref.edit();
 
-     boolean islogin= mypref.getBoolean("LoginValue",false);
+        boolean islogin = mypref.getBoolean("LoginValue", false);
 
 
+        try {
+            String username = usernamefield.getText().toString();
+            if (islogin) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("USER_NAME", username);
+                startActivity(intent);
+                finish();
 
-try {
-    if (islogin) {
-        // Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        //startActivity(intent);
-        //finish();
-
-    }
-}
-catch(NullPointerException ex){
-    Log.i("ExceptionMessage", ex.toString());
-}
-
+            }
+        } catch (NullPointerException ex) {
+            Log.i("ExceptionMessage", ex.toString());
+        }
 
 
 //////////////////////
-
-
-
-
 
 
         //Click events
@@ -113,14 +100,8 @@ catch(NullPointerException ex){
                 loginbutton.setText("Please wait...");
 
 
-
-
-
-
-
-
-                DatabaseReference dbuser=FirebaseDatabase.getInstance().getReference();
-                Query query=dbuser.child("UserRegister").orderByChild("username").equalTo(usernamefield.getText().toString());
+                DatabaseReference dbuser = FirebaseDatabase.getInstance().getReference();
+                Query query = dbuser.child("UserRegister").orderByChild("username").equalTo(usernamefield.getText().toString());
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -130,25 +111,25 @@ catch(NullPointerException ex){
 
                                 //  String username=user.getUsername();
                                 String password = Snapshot.child("password").getValue().toString();
-                              //  String username = Snapshot.child("username").getValue().toString();
-                             //    Log.i("password",password);
-                               if (password.equals(passwordfield.getText().toString())) {
+                                //  String username = Snapshot.child("username").getValue().toString();
+                                //    Log.i("password",password);
+                                if (password.equals(passwordfield.getText().toString())) {
                                     // Log.i("Message","Wroking ok");
                                     //Log.i("Password",password);
                                     //Log.i("Username", username);
-                                   //Toasty.success(getApplicationContext(),"You are genius Ali",Toast.LENGTH_SHORT).show();
-                                   String username=usernamefield.getText().toString();
+                                    //Toasty.success(getApplicationContext(),"You are genius Ali",Toast.LENGTH_SHORT).show();
+                                    String username = usernamefield.getText().toString();
 
 
-                                   //////////////Storing data in sharedprefernces
-                                   setStoreloginvalue(true);
-                                   editor.putString("USER_NAME", username);
-                                   editor.putString("PASSWORD",password);
-                                   editor.putBoolean("LoginValue",isStoreloginvalue());
-                                   editor.apply();
+                                    //////////////Storing data in sharedprefernces
+                                    setStoreloginvalue(true);
+                                    editor.putString("USER_NAME", username);
+                                    editor.putString("PASSWORD", password);
+                                    editor.putBoolean("LoginValue", isStoreloginvalue());
+                                    editor.apply();
 
                                     Toasty.success(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                                   Intent intent = new Intent(getApplicationContext(), ProgressBarActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), ProgressBarActivity.class);
                                     intent.putExtra("USER_NAME", username);
                                     startActivity(intent);
                                     finish();
@@ -164,8 +145,7 @@ catch(NullPointerException ex){
 
                             }
 
-                        }
-                        else{
+                        } else {
                             loginbutton.setText(R.string.loginbutton);
                             Toasty.error(getApplicationContext(), "User not found", Toast.LENGTH_SHORT).show();
                         }
@@ -197,22 +177,21 @@ catch(NullPointerException ex){
             }
         });
 
-      /**  signupbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(), SignupActivity.class);
-                startActivity(i);
-            }
+        /**  signupbutton.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+        Intent i=new Intent(getApplicationContext(), SignupActivity.class);
+        startActivity(i);
+        }
         });
          **/
 
-      signuptext.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              Intent i=new Intent(getApplicationContext(), SignupActivity.class);
-              startActivity(i);
-          }
-      });
+        signuptext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SignupActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 

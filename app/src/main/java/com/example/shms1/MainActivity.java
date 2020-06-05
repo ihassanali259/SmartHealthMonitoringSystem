@@ -1,12 +1,15 @@
 package com.example.shms1;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     //NavigationView item Click Listener
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -74,9 +78,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 Toast.makeText(getApplicationContext(), "Click is working Fine", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.navigation_profile:
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
                 Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
                 i.putExtra("USER_NAME", username);
-                startActivity(i);
+                startActivity(i, options.toBundle());
                 //Toast.makeText(getApplicationContext(), "Click is working Fine of profile", Toast.LENGTH_SHORT).show();
 
         }

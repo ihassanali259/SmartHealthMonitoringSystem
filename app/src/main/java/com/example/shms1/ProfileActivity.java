@@ -1,10 +1,13 @@
 package com.example.shms1;
 
 import android.os.Bundle;
+import android.transition.Slide;
 import android.util.Log;
+import android.view.Window;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shms1.Data.UserAuthenticationData;
@@ -19,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.os.Build.VERSION_CODES.LOLLIPOP;
+
 public class ProfileActivity extends AppCompatActivity {
 
     String username;
@@ -28,8 +33,14 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.textviewprofilename)
     TextView textViewname;
 
+    @RequiresApi(api = LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+
+        //set an enter transition
+
+        getWindow().setEnterTransition(new Slide());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
