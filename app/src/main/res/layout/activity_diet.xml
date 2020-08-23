@@ -8,6 +8,14 @@
     android:background="@drawable/gradient_bar"
     tools:context=".DietActivity">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/ic_wave_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="420dp"
@@ -73,6 +81,7 @@
                     android:textSize="14sp" />
 
                 <Spinner
+
                     android:id="@+id/spinner_actvities"
                     style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="match_parent"

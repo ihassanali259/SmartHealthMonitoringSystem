@@ -1,6 +1,7 @@
 package com.example.shms1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,40 +26,46 @@ import com.google.firebase.database.ValueEventListener;
 import es.dmoral.toasty.Toasty;
 
 public class SignupActivity extends AppCompatActivity {
-private EditText textfirstname;
-private EditText textlastname;
-private EditText textemail;
-private EditText textusername;
-private EditText textpassword;
-private RadioGroup myRadiogroup;
-private RadioButton radioButton;
-private Button buttonsignup;
-private DatabaseReference dbuser, dbuser2;
+    private EditText textfirstname;
+    private EditText textlastname;
+    private EditText textemail;
+    private EditText textusername;
+    private EditText textpassword;
+    private RadioGroup myRadiogroup;
+    private RadioButton radioButton;
+    private Button buttonsignup;
+    private DatabaseReference dbuser, dbuser2;
+
+
+    SharedPreferences mypref;
+    SharedPreferences.Editor editor;
 
     EmailVerificationClass emf;
     DBHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-         textfirstname=  findViewById(R.id.firstname);
-         textlastname=   findViewById(R.id.lstname);
-         textemail=       findViewById(R.id.email);
-         textusername=   findViewById(R.id.username);
-         textpassword=   findViewById(R.id.passwordfield);
-         myRadiogroup=    findViewById(R.id.radiogroup);
-         buttonsignup=    findViewById(R.id.signupbutton);
+        textfirstname = findViewById(R.id.firstname);
+        textlastname = findViewById(R.id.lstname);
+        textemail = findViewById(R.id.email);
+        textusername = findViewById(R.id.username);
+        textpassword = findViewById(R.id.passwordfield);
+        myRadiogroup = findViewById(R.id.radiogroup);
+        buttonsignup = findViewById(R.id.signupbutton);
         emf = new EmailVerificationClass();
 
+        mypref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        editor = mypref.edit();
 
 
-         dbuser= FirebaseDatabase.getInstance().getReference("UserRegister");
+        dbuser = FirebaseDatabase.getInstance().getReference("UserRegister");
 
 
-
-         db=new DBHandler(getApplicationContext());
-       //  Log.i("Welcome","hi");
+        db = new DBHandler(getApplicationContext());
+        //  Log.i("Welcome","hi");
 
          buttonsignup.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -91,22 +98,29 @@ private DatabaseReference dbuser, dbuser2;
 
             Log.i("Fname", fname);
         radioButton = findViewById(id);
-            String myselectedbutton = radioButton.getText().toString();
+        String myselectedbutton = radioButton.getText().toString();
 
-            UserAuthenticationData user=new UserAuthenticationData(uId,fname,lname,email, uname, passwrd,myselectedbutton);
-            dbuser.child(uId).setValue(user);
+        UserAuthenticationData user = new UserAuthenticationData(uId, fname, lname, email, uname, passwrd, myselectedbutton);
+        dbuser.child(uId).setValue(user);
 
         emf.emailVerifyRequest(email);
 
 
-           // db.InsertRegistrationRecord(fname, lname, email, uname, passwrd, myselectedbutton);
-            Toasty.success(getApplicationContext(), "Registered Successfully!", Toast.LENGTH_SHORT).show();
+        // db.InsertRegistrationRecord(fname, lname, email, uname, passwrd, myselectedbutton);
+
+        //Putting login value true so user won't have to login after signup
+        editor.putString("USER_NAME", uname);
+        editor.putString("PASSWORD", passwrd);
+        editor.putBoolean("LoginValue", true);
+        editor.apply();
+
+
+        Toasty.success(getApplicationContext(), "Registered Successfully!", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(getApplicationContext(), EmailVerificationActivity.class);
         i.putExtra("Email", email);
-        i.putExtra("Username",uname);
+        i.putExtra("Username", uname);
         startActivity(i);
         finish();
-
 
 
     }

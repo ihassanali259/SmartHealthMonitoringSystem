@@ -1,4 +1,4 @@
-package com.example.shms1;
+ package com.example.shms1;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -53,6 +53,8 @@ public class EmailVerificationActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Log.d("BUttonPressed", "Button is pressed");
 
                 EmailVerifyResponse(email);
             }

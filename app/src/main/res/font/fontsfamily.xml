@@ -31,7 +31,12 @@
         android:fontWeight="100"
 
         />
+    <font
+        android:font="@font/timesnewroman"
+        android:fontStyle="normal"
+        android:fontWeight="50"
 
+        />
 
 
 </font-family>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="daily_activity_array">
+        <item>Daily Activity</item>
+        <item>Basal Metabolic Rate</item>
+        <item>Little or no exercise</item>
+        <item>Lightly activity</item>
+        <item>Moderately active</item>
+        <item>Very Active</item>
+        <item>Extra active</item>
+
+
+    </string-array>
+
+</resources>

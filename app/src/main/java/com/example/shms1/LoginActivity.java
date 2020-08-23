@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private DBHandler dbHandler;
     private EditText passwordfield;
     private TextView signuptext;
+    String username;
 
 
     public void setStoreloginvalue(boolean storeloginvalue) {
@@ -58,9 +59,9 @@ public class LoginActivity extends AppCompatActivity {
         //Component initialization for login activity
         loginbutton = findViewById(R.id.buttonlogin);
         usernamefield = findViewById(R.id.usernamefield);
-        //signupbutton=(Button) findViewById(R.id.buttonsignup1);
+        signuptext = findViewById(R.id.signuptextview);
 
-        signuptext = findViewById(R.id.accountinfotext);
+
         passwordfield = findViewById(R.id.passwordfield);
 
 
@@ -69,6 +70,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         ////////////////
+
+
         mypref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         editor = mypref.edit();
 
@@ -76,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         try {
-            String username = usernamefield.getText().toString();
+            username = usernamefield.getText().toString();
             if (islogin) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("USER_NAME", username);
@@ -118,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                                     //Log.i("Password",password);
                                     //Log.i("Username", username);
                                     //Toasty.success(getApplicationContext(),"You are genius Ali",Toast.LENGTH_SHORT).show();
-                                    String username = usernamefield.getText().toString();
+                                    username = usernamefield.getText().toString();
 
 
                                     //////////////Storing data in sharedprefernces

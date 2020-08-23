@@ -1,3 +1,6 @@
+package com.example.shms1;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -19,6 +22,7 @@ import info.hoang8f.fbutton.R;
  * Created by hoang8f on 5/5/14.
  */
 
+@SuppressLint("AppCompatCustomView")
 public class FButton extends Button implements View.OnTouchListener {
 
     boolean isShadowColorDefined = false;

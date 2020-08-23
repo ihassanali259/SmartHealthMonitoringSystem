@@ -4,6 +4,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomnavigation.setOnNavigationItemSelectedListener(this);
 
         username = getIntent().getStringExtra("USER_NAME");
+        Log.d("Username", "onCreate: " + username);
 
 
         setSupportActionBar(mToolbar);

@@ -27,7 +27,6 @@
         android:layout_below="@+id/imageViewsplash"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/creampuff"
         android:text="Health Monitor"
         android:textColor="@color/colorWhite"
         android:textSize="26sp" />

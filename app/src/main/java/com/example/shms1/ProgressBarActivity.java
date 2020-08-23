@@ -3,10 +3,8 @@ package com.example.shms1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.animation.LinearInterpolator;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.agrawalsuneet.dotsloader.loaders.LazyLoader;
 
@@ -19,8 +17,13 @@ public class ProgressBarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress_bar);
-        lazyLoader = findViewById(R.id.lazyloader);
+
         username = getIntent().getStringExtra("USER_NAME");
+
+
+
+        /*lazyLoader = findViewById(R.id.lazyloader);
+
 
         LazyLoader loader = new LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.loader_selected),
                 ContextCompat.getColor(this, R.color.loader_selected),
@@ -30,7 +33,7 @@ public class ProgressBarActivity extends AppCompatActivity {
         loader.setSecondDelayDuration(200);
         loader.setInterpolator(new LinearInterpolator());
 
-        lazyLoader.addView(loader);
+        lazyLoader.addView(loader);*/
 
 
         new Handler().postDelayed(new Runnable() {
